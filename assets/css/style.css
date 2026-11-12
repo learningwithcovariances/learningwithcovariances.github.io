@@ -293,9 +293,53 @@ h3 { font-size: 1.25rem; font-weight: 600; }
 .topics strong { display: block; font-weight: 600; color: var(--ink); }
 .topics span { display: block; font-size: .93rem; color: var(--muted); }
 
-.takeaways { margin: 0; padding-left: 1.2em; }
-.takeaways li { margin-bottom: 8px; }
-.takeaways li::marker { color: var(--coral); }
+/* Key takeaways: numbered panels with square "matrix-cell" sub-bullets */
+.takeaways {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: takeaway;
+  display: grid;
+  gap: 16px;
+}
+.takeaways > li {
+  counter-increment: takeaway;
+  position: relative;
+  padding: 20px 22px 16px 66px;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.takeaways > li::before {
+  content: counter(takeaway);
+  position: absolute;
+  left: 20px; top: 19px;
+  width: 30px; height: 30px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-head);
+  font-size: .95rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--coral);
+  border-radius: 50%;
+}
+.takeaways p { margin: 0 0 8px; }
+.takeaways p strong { color: var(--ink); }
+.takeaways ul { list-style: none; margin: 0; padding: 0; }
+.takeaways ul li {
+  position: relative;
+  padding: 3px 0 3px 22px;
+  font-size: .95rem;
+}
+.takeaways ul li::before {
+  content: "";
+  position: absolute;
+  left: 3px; top: .8em;
+  width: 8px; height: 8px;
+  background: var(--blue);
+  border-radius: 2px;
+}
 
 .info-card {
   position: sticky;

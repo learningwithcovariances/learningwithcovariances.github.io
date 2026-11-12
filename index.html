@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=5">
+  <link rel="stylesheet" href="assets/css/style.css?v=6">
 </head>
 <body>
 
@@ -126,10 +126,27 @@
           </ol>
 
           <h3>Key takeaways</h3>
-          <ul class="takeaways">
-            <li>The covariance matrix can serve as a relational inductive bias for representation learning. It improves generalization and parameter efficiency compared with standard neural networks, and stability and transferability compared with PCA.</li>
-            <li>VNNs address methodological and conceptual obscurities in brain age gap prediction.</li>
-          </ul>
+          <ol class="takeaways">
+            <li>
+              <p><strong>The covariance matrix can serve as a relational inductive bias for representation learning.</strong>
+              By addressing the key challenges of learning with covariances, VNNs:</p>
+              <ul>
+                <li>improve generalization and parameter efficiency compared with standard neural networks;</li>
+                <li>achieve better stability to finite-sample estimation errors than PCA;</li>
+                <li>transfer across dimensionalities and resolutions;</li>
+                <li>address methodological and conceptual obscurities in brain age gap prediction.</li>
+              </ul>
+            </li>
+            <li>
+              <p><strong>The VNN principles define a more general framework</strong> that maintains their key
+              advantages and encompasses:</p>
+              <ul>
+                <li>estimators beyond the sample covariance (e.g., thresholded or regularized covariances, and the precision matrix via the graphical lasso);</li>
+                <li>architectures beyond GNNs (e.g., scattering transforms for untrained processing);</li>
+                <li>task-aware structure estimation.</li>
+              </ul>
+            </li>
+          </ol>
         </div>
 
         <aside class="info-card">
@@ -141,7 +158,7 @@
               Tutorial 1 &middot; <a href="https://logconference.org/conference-program">Conference program</a>
             </dd>
             <dt>Date &amp; time</dt>
-            <dd>Friday, November 20, 2026<br>15:30 – 18:00 EST (Boston time)</dd>
+            <dd>Friday, November 20, 2026<br>15:30 – 18:00 EST</dd>
             <dt>Location</dt>
             <dd>Northeastern University, Boston</dd>
             <dt>Format</dt>
@@ -384,19 +401,19 @@
             <span class="tags"><a href="https://doi.org/10.1007/978-3-031-70344-7_2">DOI</a> <a href="https://arxiv.org/abs/2409.10068">arXiv</a> <a href="https://github.com/andrea-cavallo-98/STVNN">Code</a></span>
           </li>
           <li>
-            A. Cavallo, A. Georgoutsos, and E. Isufi, &ldquo;Spatiotemporal Kronecker covariance neural networks,&rdquo;
-            arXiv preprint arXiv:2609.25326, 2026.
-            <span class="tags"><a href="https://arxiv.org/abs/2609.25326">arXiv</a> <a href="https://github.com/andrea-cavallo-98/KVNN">Code</a></span>
-          </li>
-          <li>
             A. Cavallo, M. Navarro, S. Segarra, and E. Isufi, &ldquo;Fair covariance neural networks,&rdquo;
-            arXiv preprint arXiv:2409.08558, 2024.
-            <span class="tags"><a href="https://arxiv.org/abs/2409.08558">arXiv</a></span>
+            in <em>Proc. IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, pp. 1&ndash;5, 2025.
+            <span class="tags"><a href="https://ieeexplore.ieee.org/document/10888282">IEEE Xplore</a> <a href="https://arxiv.org/abs/2409.08558">arXiv</a></span>
           </li>
           <li>
-            A. Cavallo, S. P. Chepuri, C. Kanatsoulis, and E. Isufi, &ldquo;Canonical correlation neural networks,&rdquo;
-            arXiv preprint arXiv:2611.07212, 2026.
-            <span class="tags"><a href="https://arxiv.org/abs/2611.07212">arXiv</a></span>
+            C. Battiloro, A. Cavallo, and E. Isufi, &ldquo;Covariance filters and neural networks over Hilbert spaces,&rdquo;
+            in <em>Proc. IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, pp. 421&ndash;425, 2026.
+            <span class="tags"><a href="https://ieeexplore.ieee.org/abstract/document/11463820">IEEE Xplore</a> <a href="https://arxiv.org/abs/2509.13178">arXiv</a></span>
+          </li>
+          <li>
+            O. Roy, Y. Moshfeghi, and K. Smith, &ldquo;Covariance density neural networks,&rdquo;
+            <em>Transactions on Machine Learning Research (TMLR)</em>, 2026.
+            <span class="tags"><a href="https://arxiv.org/abs/2505.11139">arXiv</a></span>
           </li>
         </ol>
 
@@ -436,12 +453,6 @@
             <a class="repo" href="https://github.com/andrea-cavallo-98/STVNN">
               <span class="repo-name">andrea-cavallo-98/<strong>STVNN</strong></span>
               <span class="repo-desc">Spatiotemporal covariance neural networks (ECML PKDD 2024)</span>
-            </a>
-          </li>
-          <li>
-            <a class="repo" href="https://github.com/andrea-cavallo-98/KVNN">
-              <span class="repo-name">andrea-cavallo-98/<strong>KVNN</strong></span>
-              <span class="repo-desc">Spatiotemporal Kronecker covariance neural networks</span>
             </a>
           </li>
         </ul>
