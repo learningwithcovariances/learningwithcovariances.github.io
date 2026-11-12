@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learning with Covariance Matrices | LoG 2026 Tutorial</title>
+  <meta name="description" content="Tutorial at the Learning on Graphs Conference (LoG) 2026: Learning with Covariance Matrices — Foundations, Applications to Network Neuroscience and Recent Developments.">
+
+  <!-- Social preview (fill in once the site URL is known) -->
+  <meta property="og:title" content="Learning with Covariance Matrices | LoG 2026 Tutorial">
+  <meta property="og:description" content="Foundations, Applications to Network Neuroscience and Recent Developments.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=5">
+</head>
+<body>
+
+  <!-- ============ Top navigation ============ -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main">
+      <a class="brand" href="#home">
+        <img src="assets/img/favicon.svg" alt="" width="22" height="22">
+        <span>Learning with Covariance Matrices</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#speakers">Speakers</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#materials">Materials</a></li>
+        <li><a href="#additional">Additional Material</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ HOME ============ -->
+    <section id="home" class="hero">
+      <img class="hero-matrix" src="assets/img/covariance.svg" alt="" aria-hidden="true">
+      <div class="container hero-inner">
+        <p class="eyebrow">Tutorial &middot; Learning on Graphs Conference (LoG) 2026</p>
+        <h1>Learning with Covariance Matrices</h1>
+        <p class="subtitle">Foundations, Applications to Network Neuroscience and Recent Developments</p>
+
+        <ul class="hero-meta">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+            <span>Friday, November 20, 2026</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span>15:30 – 18:00 EST</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            <span>Northeastern University, Boston</span>
+          </li>
+        </ul>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#schedule">View schedule</a>
+          <a class="btn btn-ghost" href="#materials">Tutorial materials</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" aria-labelledby="about-title">
+      <div class="container about-grid">
+        <div>
+          <p class="section-label">About</p>
+          <h2 id="about-title">Overview</h2>
+          <p>
+            Covariance matrices capture the redundancies between the features of a dataset: brain
+            regions that activate together, stock prices that fluctuate in tandem, traffic volumes
+            that are correlated across intersections. They are a cornerstone of multivariate data
+            analysis, most prominently through principal component analysis (PCA). Yet PCA is a
+            fixed, task-agnostic linear transformation, and learning from <em>sample</em> covariance
+            matrices raises four key challenges: how to use covariance information for representation
+            learning on a downstream task; whether inference is <strong>stable</strong> to the
+            finite-sample perturbations of the estimated covariance; whether models are
+            <strong>transferable</strong> across datasets that describe the same phenomenon with a
+            different number of features; and how to make learning <strong>interpretable</strong>.
+          </p>
+          <p>
+            This tutorial treats the covariance matrix as a relational inductive bias, a data-driven
+            graph, and introduces <strong>coVariance neural networks (VNNs)</strong>: graph neural
+            networks that operate on sample covariance matrices. Starting from the connection between
+            PCA and the graph Fourier transform, we show that coVariance filters implicitly perform
+            PCA-based inference without computing eigenvectors, and that, unlike PCA, VNNs are provably
+            stable to covariance estimation errors and transferable across scales. We then show how
+            these properties enable principled, anatomically interpretable brain age gap prediction in
+            network neuroscience, and we illustrate how using pairwise statistics as inductive biases
+            underpins a broader set of data processing methods beyond VNNs, including sparse VNNs,
+            precision neural networks and covariance scattering transforms.
+          </p>
+
+          <h3>Topics covered</h3>
+          <ol class="topics">
+            <li>
+              <strong>PCA and the graph Fourier transform</strong>
+              <span>PCA-based inference implemented as a polynomial graph filter over the covariance matrix.</span>
+            </li>
+            <li>
+              <strong>coVariance neural networks (VNNs)</strong>
+              <span>coVariance filters as convolutional operators, and VNNs as their layered composition with nonlinearities.</span>
+            </li>
+            <li>
+              <strong>Theory of VNNs: stability and transferability</strong>
+              <span>Robustness to finite-sample covariance estimates, scale-free models and graphon limits.</span>
+            </li>
+            <li>
+              <strong>Application: principled brain age gap prediction with VNNs</strong>
+              <span>Anatomically interpretable and explainable biomarkers of neurodegeneration.</span>
+            </li>
+            <li>
+              <strong>Variants of VNNs</strong>
+              <span>Sparse VNNs, precision neural networks and covariance scattering transforms.</span>
+            </li>
+          </ol>
+
+          <h3>Key takeaways</h3>
+          <ul class="takeaways">
+            <li>The covariance matrix can serve as a relational inductive bias for representation learning. It improves generalization and parameter efficiency compared with standard neural networks, and stability and transferability compared with PCA.</li>
+            <li>VNNs address methodological and conceptual obscurities in brain age gap prediction.</li>
+          </ul>
+        </div>
+
+        <aside class="info-card">
+          <h3>At a glance</h3>
+          <dl>
+            <dt>Conference</dt>
+            <dd>
+              <a href="https://logconference.org/">Learning on Graphs Conference (LoG) 2026</a><br>
+              Tutorial 1 &middot; <a href="https://logconference.org/conference-program">Conference program</a>
+            </dd>
+            <dt>Date &amp; time</dt>
+            <dd>Friday, November 20, 2026<br>15:30 – 18:00 EST (Boston time)</dd>
+            <dt>Location</dt>
+            <dd>Northeastern University, Boston</dd>
+            <dt>Format</dt>
+            <dd>In person, 2.5 hours</dd>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ SPEAKERS ============ -->
+    <section id="speakers" class="section section-alt" aria-labelledby="speakers-title">
+      <div class="container">
+        <p class="section-label">Speakers</p>
+        <h2 id="speakers-title">Speakers</h2>
+
+        <!-- Photos live in assets/img/speakers/ (square-ish, ~400–500 px works best). -->
+        <div class="people people-main">
+
+          <article class="speaker speaker-main">
+            <img class="avatar" src="assets/img/speakers/sihag.jpg" alt="Saurabh Sihag" width="150" height="150">
+            <div class="speaker-text">
+              <h3>Saurabh Sihag</h3>
+              <p class="affiliation">University at Albany</p>
+              <p class="bio">
+                Saurabh Sihag is an Assistant Professor in the Department of Electrical and Computer
+                Engineering at the University at Albany. He was previously a postdoctoral researcher in the
+                Department of Electrical and Systems Engineering at the University of Pennsylvania. His
+                research interests include statistical inference and machine learning over graph-structured
+                data and network neuroscience.
+              </p>
+              <a class="speaker-link" href="https://sihags.github.io/">Website <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+
+          <article class="speaker speaker-main">
+            <img class="avatar" src="assets/img/speakers/cavallo.jpeg" alt="Andrea Cavallo" width="150" height="150">
+            <div class="speaker-text">
+              <h3>Andrea Cavallo</h3>
+              <p class="affiliation">Delft University of Technology</p>
+              <p class="bio">
+                Andrea Cavallo is a PhD candidate at the Faculty of Electrical Engineering, Mathematics and
+                Computer Science, Delft University of Technology, the Netherlands. His research focuses on
+                relational machine learning through higher-order networks and statistical moments, as well
+                as diffusion models.
+              </p>
+              <a class="speaker-link" href="https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/intelligent-systems/multimedia-computing/people/andrea-cavallo">Website <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+
+        </div>
+
+        <h2 class="people-heading">Other organizers</h2>
+        <div class="people people-other">
+
+          <article class="speaker">
+            <img class="avatar" src="assets/img/speakers/mateos.jpg" alt="Gonzalo Mateos" width="120" height="120">
+            <h3>Gonzalo Mateos</h3>
+            <p class="affiliation">University of Rochester</p>
+            <p class="bio">
+              Gonzalo Mateos is a Professor with the Department of Electrical and Computer Engineering at the
+              University of Rochester, and the Associate Director for Research at the Goergen Institute for
+              Data Science and Artificial Intelligence. His research interests lie in statistical learning
+              from complex data, network science, decentralized optimization, and graph signal processing.
+            </p>
+            <a class="speaker-link" href="https://hajim.rochester.edu/ece/sites/gmateos/">Website <span aria-hidden="true">&rarr;</span></a>
+          </article>
+
+          <article class="speaker">
+            <img class="avatar" src="assets/img/speakers/isufi.jpeg" alt="Elvin Isufi" width="120" height="120">
+            <h3>Elvin Isufi</h3>
+            <p class="affiliation">Delft University of Technology</p>
+            <p class="bio">
+              Elvin Isufi is an Associate Professor in the Faculty of Electrical Engineering, Mathematics and
+              Computer Science at TU Delft, where he also co-directs AIdroLab, the TU Delft AI Lab on
+              graph-based learning for water networks. His research interests are in signal processing and
+              machine learning for graphs and other topological structures, with applications in critical
+              infrastructure networks, recommender systems, and sensor networks.
+            </p>
+            <a class="speaker-link" href="https://sites.google.com/site/elvinisufihp">Website <span aria-hidden="true">&rarr;</span></a>
+          </article>
+
+          <article class="speaker">
+            <img class="avatar" src="assets/img/speakers/ribeiro.jpg" alt="Alejandro Ribeiro" width="120" height="120">
+            <h3>Alejandro Ribeiro</h3>
+            <p class="affiliation">University of Pennsylvania</p>
+            <p class="bio">
+              Alejandro Ribeiro is a Professor of Electrical and Systems Engineering at the University of
+              Pennsylvania, where he has been since 2008. His research interests include statistical signal
+              processing for networks and networked phenomena, structured representations of networked data,
+              graph signal processing, network optimization, robot teams, and networked control.
+            </p>
+            <a class="speaker-link" href="https://alelab.engineering.upenn.edu/alejandro-ribeiro/">Website <span aria-hidden="true">&rarr;</span></a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCHEDULE ============ -->
+    <section id="schedule" class="section" aria-labelledby="schedule-title">
+      <div class="container">
+        <p class="section-label">Schedule</p>
+        <h2 id="schedule-title">Program</h2>
+        <ol class="schedule">
+          <li>Introduction: learning with covariance matrices</li>
+          <li>PCA and the graph Fourier transform</li>
+          <li>coVariance neural networks (VNNs)</li>
+          <li>Theory of VNNs: stability and transferability</li>
+          <li>Application: principled brain age gap prediction with VNNs</li>
+          <li>Variants of VNNs</li>
+          <li>Conclusions, future directions &amp; Q&amp;A</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ MATERIALS ============ -->
+    <section id="materials" class="section section-alt" aria-labelledby="materials-title">
+      <div class="container">
+        <p class="section-label">Materials</p>
+        <h2 id="materials-title">Tutorial materials</h2>
+
+        <div class="materials-grid">
+          <a class="material" href="#">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <h3>Slides</h3>
+            <p class="placeholder">[Link to slides PDF]</p>
+          </a>
+          <div class="material material-code">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg>
+            <h3>Code</h3>
+            <p>Hands-on Google Colab notebook for the tutorial. To use it:</p>
+            <ol class="steps">
+              <li><strong>Open</strong> the notebook with the button below.</li>
+              <li><strong>Create your own copy</strong>: in Colab, choose <em>File &rarr; Save a copy in Drive</em> (requires a Google account).</li>
+              <li><strong>Run</strong> your copy: choose <em>Runtime &rarr; Run all</em>, or run the cells one by one.</li>
+            </ol>
+            <div class="material-actions">
+              <a class="btn btn-primary" href="https://colab.research.google.com/drive/19EtO9WTkyehwlB4vh4HZFMQqBrXvwBKb?usp=sharing" target="_blank" rel="noopener">Open in Colab</a>
+              <a class="speaker-link" href="#code">Related code repositories <span aria-hidden="true">&darr;</span></a>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="subhead">Related tutorial articles</h3>
+        <ul class="refs">
+          <li>
+            <span class="ref-badge">Companion article</span>
+            <span class="ref-title">Learning with Covariance Matrices: Principal Component Analysis Meets Learning with Graphs</span>
+            <span class="ref-authors">S. Sihag, A. Cavallo, E. Isufi, G. Mateos, and A. Ribeiro</span>
+            <span class="ref-meta"><em>IEEE Signal Processing Magazine</em>, accepted for publication, 2026.</span>
+            <span class="ref-links">
+              <a href="https://arxiv.org/abs/2609.10490">arXiv</a>
+              <a href="https://arxiv.org/pdf/2609.10490">PDF</a>
+            </span>
+          </li>
+          <li>
+            <span class="ref-title">Disentangling Neurodegeneration with Brain Age Gap Prediction Models: A Graph Signal Processing Perspective</span>
+            <span class="ref-authors">S. Sihag, G. Mateos, and A. Ribeiro</span>
+            <span class="ref-meta"><em>IEEE Signal Processing Magazine</em>, vol. 42, no. 4, pp. 58&ndash;77, 2025.</span>
+            <span class="ref-links">
+              <a href="https://ieeexplore.ieee.org/abstract/document/11263970">IEEE Xplore</a>
+              <a href="https://arxiv.org/abs/2510.12763">arXiv</a>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ ADDITIONAL MATERIAL ============ -->
+    <section id="additional" class="section" aria-labelledby="additional-title">
+      <div class="container">
+        <p class="section-label">Additional Material</p>
+        <h2 id="additional-title">Additional material</h2>
+
+        <h3 class="subhead" id="papers">Papers</h3>
+
+        <h4 class="biblio-group">coVariance neural networks: foundations and theory</h4>
+        <ol class="biblio">
+          <li>
+            S. Sihag, G. Mateos, C. McMillan, and A. Ribeiro, &ldquo;coVariance neural networks,&rdquo;
+            in <em>Proc. Conference on Neural Information Processing Systems (NeurIPS)</em>, 2022.
+            <span class="tags"><a href="https://arxiv.org/abs/2205.15856">arXiv</a> <a href="https://github.com/sihags/VNN">Code</a></span>
+          </li>
+          <li>
+            S. Sihag, G. Mateos, C. McMillan, and A. Ribeiro, &ldquo;Transferability of covariance neural networks,&rdquo;
+            <em>IEEE Journal of Selected Topics in Signal Processing</em>, 2024.
+            <span class="tags"><a href="https://arxiv.org/abs/2305.01807">arXiv</a></span>
+          </li>
+          <li>
+            S. Khalafi, S. Sihag, and A. Ribeiro, &ldquo;Neural tangent kernels motivate cross-covariance graphs in neural networks,&rdquo;
+            in <em>Proc. International Conference on Machine Learning (ICML)</em>, 2024.
+            <span class="tags"><a href="https://openreview.net/forum?id=61JD8wp4Id">OpenReview</a></span>
+          </li>
+        </ol>
+
+        <h4 class="biblio-group">Network neuroscience and brain age prediction</h4>
+        <ol class="biblio">
+          <li>
+            S. Sihag, G. Mateos, C. McMillan, and A. Ribeiro, &ldquo;Explainable brain age prediction using coVariance neural networks,&rdquo;
+            in <em>Proc. Conference on Neural Information Processing Systems (NeurIPS)</em>, 2023.
+            <span class="tags"><a href="https://openreview.net/forum?id=cAhJF87GN0">OpenReview</a> <a href="https://arxiv.org/abs/2305.18370">arXiv</a></span>
+          </li>
+          <li>
+            S. Sihag, G. Mateos, and A. Ribeiro, &ldquo;Explainable brain age gap prediction in neurodegenerative conditions using coVariance neural networks,&rdquo;
+            in <em>Proc. IEEE International Symposium on Biomedical Imaging (ISBI)</em>, 2025.
+            <span class="tags"><a href="https://arxiv.org/abs/2501.01510">arXiv</a></span>
+          </li>
+        </ol>
+
+        <h4 class="biblio-group">Recent developments</h4>
+        <ol class="biblio">
+          <li>
+            A. Cavallo, Z. Gao, and E. Isufi, &ldquo;Sparse covariance neural networks,&rdquo;
+            <em>IEEE Transactions on Signal Processing</em>, vol. 74, pp. 3077&ndash;3091, 2026.
+            <span class="tags"><a href="https://doi.org/10.1109/TSP.2026.3714283">DOI</a> <a href="https://arxiv.org/abs/2410.01669">arXiv</a> <a href="https://github.com/andrea-cavallo-98/SVNN">Code</a></span>
+          </li>
+          <li>
+            A. Cavallo, S. Rey, A. G. Marques, and E. Isufi, &ldquo;Precision neural networks: Joint graph and relational learning,&rdquo;
+            in <em>Proc. IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, pp. 466&ndash;470, 2026.
+            <span class="tags"><a href="https://arxiv.org/abs/2509.14821">arXiv</a> <a href="https://github.com/andrea-cavallo-98/PNN">Code</a></span>
+          </li>
+          <li>
+            A. Cavallo, S. Rey, A. G. Marques, and E. Isufi, &ldquo;Joint precision neural networks: Task-aware dependency and predictive learning,&rdquo;
+            arXiv preprint arXiv:2610.06023, 2026.
+            <span class="tags"><a href="https://arxiv.org/abs/2610.06023">arXiv</a></span>
+          </li>
+          <li>
+            A. Cavallo, A. Raghuvanshi, S. P. Chepuri, and E. Isufi, &ldquo;Covariance scattering transforms,&rdquo;
+            in <em>Proc. AAAI Conference on Artificial Intelligence</em>, vol. 40, no. 24, pp. 19925&ndash;19933, 2026.
+            <span class="tags"><a href="https://arxiv.org/abs/2511.08878">arXiv</a> <a href="https://github.com/andrea-cavallo-98/CST">Code</a></span>
+          </li>
+          <li>
+            A. Cavallo, A. Raghuvanshi, S. P. Chepuri, and E. Isufi, &ldquo;Robust covariance neural networks,&rdquo;
+            in <em>Proc. Asilomar Conference on Signals, Systems, and Computers</em>, 2025.
+            <span class="tags"><a href="https://ieeexplore.ieee.org/abstract/document/11443734">IEEE Xplore</a></span>
+          </li>
+          <li>
+            A. Cavallo, M. Sabbaqi, and E. Isufi, &ldquo;Spatiotemporal covariance neural networks,&rdquo;
+            in <em>Proc. European Conference on Machine Learning and Knowledge Discovery in Databases (ECML PKDD)</em>, pp. 18&ndash;34, 2024.
+            <span class="tags"><a href="https://doi.org/10.1007/978-3-031-70344-7_2">DOI</a> <a href="https://arxiv.org/abs/2409.10068">arXiv</a> <a href="https://github.com/andrea-cavallo-98/STVNN">Code</a></span>
+          </li>
+          <li>
+            A. Cavallo, A. Georgoutsos, and E. Isufi, &ldquo;Spatiotemporal Kronecker covariance neural networks,&rdquo;
+            arXiv preprint arXiv:2609.25326, 2026.
+            <span class="tags"><a href="https://arxiv.org/abs/2609.25326">arXiv</a> <a href="https://github.com/andrea-cavallo-98/KVNN">Code</a></span>
+          </li>
+          <li>
+            A. Cavallo, M. Navarro, S. Segarra, and E. Isufi, &ldquo;Fair covariance neural networks,&rdquo;
+            arXiv preprint arXiv:2409.08558, 2024.
+            <span class="tags"><a href="https://arxiv.org/abs/2409.08558">arXiv</a></span>
+          </li>
+          <li>
+            A. Cavallo, S. P. Chepuri, C. Kanatsoulis, and E. Isufi, &ldquo;Canonical correlation neural networks,&rdquo;
+            arXiv preprint arXiv:2611.07212, 2026.
+            <span class="tags"><a href="https://arxiv.org/abs/2611.07212">arXiv</a></span>
+          </li>
+        </ol>
+
+        <h3 class="subhead" id="code">Code repositories</h3>
+        <ul class="repos">
+          <li>
+            <a class="repo" href="https://github.com/sihags/VNN">
+              <span class="repo-name">sihags/<strong>VNN</strong></span>
+              <span class="repo-desc">coVariance neural networks: synthetic data experiments (NeurIPS 2022)</span>
+            </a>
+          </li>
+          <li>
+            <a class="repo" href="https://github.com/sihags/VNN_Brain_Age">
+              <span class="repo-name">sihags/<strong>VNN_Brain_Age</strong></span>
+              <span class="repo-desc">Brain age prediction with coVariance neural networks</span>
+            </a>
+          </li>
+          <li>
+            <a class="repo" href="https://github.com/andrea-cavallo-98/SVNN">
+              <span class="repo-name">andrea-cavallo-98/<strong>SVNN</strong></span>
+              <span class="repo-desc">Sparse covariance neural networks (IEEE TSP 2026)</span>
+            </a>
+          </li>
+          <li>
+            <a class="repo" href="https://github.com/andrea-cavallo-98/PNN">
+              <span class="repo-name">andrea-cavallo-98/<strong>PNN</strong></span>
+              <span class="repo-desc">Precision neural networks (ICASSP 2026)</span>
+            </a>
+          </li>
+          <li>
+            <a class="repo" href="https://github.com/andrea-cavallo-98/CST">
+              <span class="repo-name">andrea-cavallo-98/<strong>CST</strong></span>
+              <span class="repo-desc">Covariance scattering transforms (AAAI 2026)</span>
+            </a>
+          </li>
+          <li>
+            <a class="repo" href="https://github.com/andrea-cavallo-98/STVNN">
+              <span class="repo-name">andrea-cavallo-98/<strong>STVNN</strong></span>
+              <span class="repo-desc">Spatiotemporal covariance neural networks (ECML PKDD 2024)</span>
+            </a>
+          </li>
+          <li>
+            <a class="repo" href="https://github.com/andrea-cavallo-98/KVNN">
+              <span class="repo-name">andrea-cavallo-98/<strong>KVNN</strong></span>
+              <span class="repo-desc">Spatiotemporal Kronecker covariance neural networks</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Learning with Covariance Matrices &middot; LoG 2026 Tutorial</p>
+      <p>Contact: <a href="#" class="placeholder">[contact email]</a></p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js?v=5"></script>
+</body>
+</html>

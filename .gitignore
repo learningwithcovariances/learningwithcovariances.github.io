@@ -1,0 +1,11 @@
+# Working files, not part of the website
+bios.md
+photos/
+
+# Slides: not published yet
+VNN_Tutorial_LoG_v2.pdf
+
+# OS clutter
+Thumbs.db
+desktop.ini
+.DS_Store
