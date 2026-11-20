@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=7">
+  <link rel="stylesheet" href="assets/css/style.css?v=8">
 </head>
 <body>
 
@@ -287,12 +287,16 @@
         <h2 id="materials-title">Tutorial materials</h2>
 
         <div class="materials-grid">
-          <a class="material" href="assets/files/VNN_Tutorial_LoG_slides.pdf" target="_blank" rel="noopener">
+          <div class="material material-card">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
             <h3>Slides</h3>
-            <p>Tutorial slides (PDF, 17&nbsp;MB)</p>
-          </a>
-          <div class="material material-code">
+            <p>The slides presented at the tutorial, covering all parts of the program.</p>
+            <div class="material-actions">
+              <a class="btn btn-primary" href="assets/files/VNN_Tutorial_LoG_slides.pdf" target="_blank" rel="noopener">Open slides</a>
+              <a class="speaker-link" href="assets/files/VNN_Tutorial_LoG_slides.pdf" download>Download PDF <span aria-hidden="true">&darr;</span></a>
+            </div>
+          </div>
+          <div class="material material-card">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg>
             <h3>Code</h3>
             <p>Hands-on Google Colab notebook for the tutorial. To use it:</p>

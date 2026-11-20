@@ -479,15 +479,17 @@ h3 { font-size: 1.25rem; font-weight: 600; }
 .material p { margin: 0; font-size: .92rem; }
 
 /* Slides card (narrow) + Code/Colab card (wide) */
-.materials-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); align-items: start; }
+.materials-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; }
 
-/* The Code card is a container, not a link: no hover lift */
-.material-code:hover { border-color: var(--line); box-shadow: none; transform: none; }
+/* Slides and Code cards: containers (not links), same layout, buttons aligned at the bottom */
+.material-card { display: flex; flex-direction: column; }
+.material-card svg { align-self: flex-start; }
+.material-card:hover { border-color: var(--line); box-shadow: none; transform: none; }
 
 .steps {
   list-style: none;
   counter-reset: step;
-  margin: 14px 0 20px;
+  margin: 14px 0 0;
   padding: 0;
 }
 .steps li {
@@ -510,7 +512,14 @@ h3 { font-size: 1.25rem; font-weight: 600; }
   border-radius: 50%;
 }
 
-.material-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.material-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-top: auto;   /* push buttons to the bottom so both cards line up */
+  padding-top: 22px;
+}
 
 .refs { list-style: none; margin: 0; padding: 0; }
 .refs li {
